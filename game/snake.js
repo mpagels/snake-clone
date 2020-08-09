@@ -1,12 +1,11 @@
+import { drawBorder, getMoves, getNewBody } from './util'
+
 console.clear()
 
 const canvas = document.querySelector('#canvas')
 canvas.height = 600
 canvas.width = 600
 const ctx = canvas.getContext('2d')
-
-let moveX = 5
-let moveY = 0
 
 const snake = [
   {
@@ -33,7 +32,9 @@ main()
 
 function main() {
   ctx.clearRect(0, 0, 600, 600)
-  drawBorder()
+  drawBorder().forEach((border) => {
+    ctx.fillRect(border.x, border.y, border.sizeX, border.sizeY)
+  })
   ctx.fillRect(prey.x, prey.y, prey.sizeX, prey.sizeY)
   //ctx.fillRect(snakeHead.x, snakeHead.y, snakeHead.sizeX, snakeHead.sizeY)
   snake.forEach((snakePart, i, snake) => {
@@ -81,37 +82,6 @@ function main() {
   }
 }
 
-function getMoves(moveCommand) {
-  const move = {
-    ArrowDown: function () {
-      return {
-        moveY: 5,
-        moveX: 0,
-      }
-    },
-    ArrowUp: function () {
-      return {
-        moveY: -5,
-        moveX: 0,
-      }
-    },
-    ArrowRight: function () {
-      return {
-        moveY: 0,
-        moveX: 5,
-      }
-    },
-    ArrowLeft: function () {
-      return {
-        moveY: 0,
-        moveX: -5,
-      }
-    },
-  }
-  const erg = move[moveCommand]
-  return erg()
-}
-
 window.addEventListener('keydown', (event) => {
   moveCommand = event.key
 })
@@ -140,72 +110,5 @@ function growSnake() {
     sizeY: 5,
     currentMove: lastBodyPart.currentMove,
     nextMove: lastBodyPart.nextMove,
-  })
-}
-
-function getNewBody(moveCommand) {
-  const move = {
-    ArrowDown: function () {
-      return {
-        moveY: -5,
-        moveX: 0,
-      }
-    },
-    ArrowUp: function () {
-      return {
-        moveY: 5,
-        moveX: 0,
-      }
-    },
-    ArrowRight: function () {
-      return {
-        moveY: 0,
-        moveX: -5,
-      }
-    },
-    ArrowLeft: function () {
-      return {
-        moveY: 0,
-        moveX: 5,
-      }
-    },
-  }
-  const erg = move[moveCommand]
-  return erg()
-}
-
-function drawBorder() {
-  const border = [
-    {
-      // top-border
-      x: 0,
-      y: 0,
-      sizeX: 600,
-      sizeY: 10,
-    },
-    {
-      // right-border
-      x: 590,
-      y: 0,
-      sizeX: 10,
-      sizeY: 600,
-    },
-    {
-      // bottom-border
-      x: 0,
-      y: 590,
-      sizeX: 600,
-      sizeY: 10,
-    },
-    {
-      // left-border
-      x: 0,
-      y: 0,
-      sizeX: 10,
-      sizeY: 600,
-    },
-  ]
-  border.forEach((border) => {
-    ctx.fillRect(border.x, border.y, border.sizeX, border.sizeY)
   })
 }
