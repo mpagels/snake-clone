@@ -94,8 +94,8 @@ function getPrey() {
   return {
     sizeX: 20,
     sizeY: 20,
-    x: getRandomNumber(5, 595),
-    y: getRandomNumber(5, 595),
+    x: getRandomNumber(10, 570),
+    y: getRandomNumber(10, 570),
     isEaten: false,
   }
 }
