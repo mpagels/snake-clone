@@ -14,6 +14,7 @@ const snake = [
     sizeX: 5,
     sizeY: 5,
     currentMove: 'ArrowRight',
+    color: 'black',
   },
   {
     x: 15,
@@ -22,6 +23,7 @@ const snake = [
     sizeY: 5,
     currentMove: 'ArrowRight',
     nextMove: 'ArrowRight',
+    color: 'green',
   },
 ]
 
@@ -32,10 +34,12 @@ main()
 
 function main() {
   ctx.clearRect(0, 0, 600, 600)
+  ctx.fillStyle = 'black'
   drawBorder().forEach((border) => {
     ctx.fillRect(border.x, border.y, border.sizeX, border.sizeY)
   })
   ctx.fillRect(prey.x, prey.y, prey.sizeX, prey.sizeY)
+
   //ctx.fillRect(snakeHead.x, snakeHead.y, snakeHead.sizeX, snakeHead.sizeY)
   snake.forEach((snakePart, i, snake) => {
     if (i === 0) {
@@ -72,9 +76,11 @@ function main() {
       snakePart.currentMove = snakePart.nextMove
       snakePart.nextMove = snake[i - 1].currentMove
     }
+    ctx.fillStyle = snakePart.color
     ctx.fillRect(snakePart.x, snakePart.y, snakePart.sizeX, snakePart.sizeY)
   })
   if (gameOver) {
+    ctx.fillStyle = 'red'
     ctx.font = '30px Helvetica'
     ctx.fillText('GAME OVER', 200, 250)
   } else {
