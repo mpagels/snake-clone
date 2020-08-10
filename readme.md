@@ -2,6 +2,10 @@
 
 "Eat the prey, don't hit the border."
 
-##ToDos\_
+## ToDos:
 
 - Don't bite yourself logic
+
+### Play:
+
+https://mpagels.github.io/snake-clone/
