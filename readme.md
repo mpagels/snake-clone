@@ -1,6 +1,6 @@
 # Simple Snake Clone in Javascript
 
-"Eat the prey, don't hit the border."
+"Eat the prey, get bigger, don't hit the border."
 
 ## ToDos:
 
