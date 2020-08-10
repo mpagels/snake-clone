@@ -301,8 +301,8 @@ function getPrey() {
   return {
     sizeX: 20,
     sizeY: 20,
-    x: getRandomNumber(5, 595),
-    y: getRandomNumber(5, 595),
+    x: getRandomNumber(10, 570),
+    y: getRandomNumber(10, 570),
     isEaten: false
   };
 }
@@ -347,7 +347,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52388" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52414" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
