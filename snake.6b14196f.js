@@ -232,14 +232,16 @@ var snake = [{
   y: 20,
   sizeX: 5,
   sizeY: 5,
-  currentMove: 'ArrowRight'
+  currentMove: 'ArrowRight',
+  color: 'black'
 }, {
   x: 15,
   y: 20,
   sizeX: 5,
   sizeY: 5,
   currentMove: 'ArrowRight',
-  nextMove: 'ArrowRight'
+  nextMove: 'ArrowRight',
+  color: 'green'
 }];
 var moveCommand = 'ArrowRight';
 var prey = getPrey();
@@ -248,6 +250,7 @@ main();
 
 function main() {
   ctx.clearRect(0, 0, 600, 600);
+  ctx.fillStyle = 'black';
   (0, _util.drawBorder)().forEach(function (border) {
     ctx.fillRect(border.x, border.y, border.sizeX, border.sizeY);
   });
@@ -278,10 +281,12 @@ function main() {
       snakePart.nextMove = snake[i - 1].currentMove;
     }
 
+    ctx.fillStyle = snakePart.color;
     ctx.fillRect(snakePart.x, snakePart.y, snakePart.sizeX, snakePart.sizeY);
   });
 
   if (gameOver) {
+    ctx.fillStyle = 'red';
     ctx.font = '30px Helvetica';
     ctx.fillText('GAME OVER', 200, 250);
   } else {
@@ -347,7 +352,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52414" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49681" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -524,4 +529,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","game/snake.js"], null)
-//# sourceMappingURL=snake.6b14196f.js.map
+//# sourceMappingURL=/snake.6b14196f.js.map
